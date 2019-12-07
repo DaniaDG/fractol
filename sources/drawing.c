@@ -25,37 +25,37 @@ void			put_pixel(t_ptr *ptr, int x, int y, int color)
 	}
 }
 
-t_complex	fractal(t_complex z, t_complex c)
-{
-	return (sum(multiply(z, z), c));
-}
-
 void		draw(t_ptr *ptr)
 {
-	int			x = 0;
-	int			y = 0;
-	int			i = 1;
+	int			x;
+	int			y;
+	int			i;
+	t_complex	c;
 	t_complex	z;
-	t_complex 	c;
 
-	while (x < IMG_W)
+	x = -1;
+	while (x++ <= IMG_W)
 	{
-		y = 0;
-		while (y < IMG_H)
+		y = -1;
+		while (y++ <= IMG_H)
 		{
 			c = get_complex(x, y, ptr);
+			z = c;
+			i = 1;
 			while (i <= ptr->max_iteration)
 			{
-				z = fractal(z, c);
-				if (z.x * z.x + z.y +z.y > 4.0)
+				z = sum(sqr_pow(z), c);
+				ptr->next_color = i_color(ptr, i);
+				if (z.x * z.x + z.y * z.y > 4.0)
 				{
-					put_pixel(ptr, x, y, RED);
+					//put_pixel(ptr, x, y, color(i, 0, ptr->max_iteration, C2, C2 * ptr->max_iteration / i));
+					put_pixel(ptr, x, y, color(i, 0, ptr->max_iteration, C1, C2));
 					break ;
 				}
 				i++;
 			}
-			y++;
+			ptr->prev_color = ptr->next_color;
 		}
-		x++;
 	}
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 300, 50);
 }

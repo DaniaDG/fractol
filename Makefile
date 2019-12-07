@@ -30,7 +30,7 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources/
-SOURCES_LIST = main.c init.c other.c complex.c drawing.c rgb.c
+SOURCES_LIST = main.c init.c other.c complex.c drawing.c rgb.c color.c
 
 OBJECTS_DIRECTORY = objects/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))

@@ -18,13 +18,17 @@
 # define BLUE			0x0000FF
 # define YELLOW			0xd9c91e
 # define GREY			0x555555
+# define PINK			0xFF4DC4
 
 # define WHITE			0xFFFFFF
 # define BLACK			0x000000
 
-# define LOW_COLOR		YELLOW
-# define UP_COLOR		BLUE
-# define CURRENT_COLOR	RED
+# define C1				BLACK
+# define C2				YELLOW
+# define C3				RED
+# define C4				PINK
+# define C5				BLUE
+
 # define BACKGROUND		0x555555
 
 #endif

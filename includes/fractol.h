@@ -22,12 +22,12 @@
 # include "colors.h"
 # include "get_next_line.h"
 
-# define IMG_H		600
-# define IMG_W		1080
+# define IMG_H		1000
+# define IMG_W		1000
 # define MENU_H		0
 # define MENU_W		0
-# define HEIGHT		IMG_H + MENU_H
-# define WIDTH		IMG_W + MENU_W
+# define HEIGHT		1080
+# define WIDTH		1600
 
 typedef struct		s_complex
 {
@@ -49,6 +49,9 @@ typedef struct		s_ptr
 	t_complex		max;
 	t_complex		c;
 	int				max_iteration;
+	int				color_step;
+	int				prev_color;
+	int				next_color;
 }					t_ptr;
 
 void	hooks(t_ptr *ptr);
@@ -60,9 +63,12 @@ int		red(int rgb);
 int		green(int rgb);
 int		blue(int rgb);
 int		rgb(int r, int g, int b);
+int		color(int current, int min, int max, int color1, int color2);
+int		i_color(t_ptr *ptr, int i);
 t_complex	sum(t_complex a, t_complex b);
 t_complex	multiply(t_complex a, t_complex b);
 t_complex	get_complex(int x, int y, t_ptr *ptr);
+t_complex	sqr_pow(t_complex c);
 void		draw(t_ptr *ptr);
 
 
