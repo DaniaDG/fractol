@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   complex.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bsausage <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/04 09:46:07 by bsausage          #+#    #+#             */
+/*   Updated: 2019/10/22 09:07:49 by bsausage         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fractol.h"
+
+t_complex	sum(t_complex a, t_complex b)
+{
+	t_complex	z;
+
+	z.x = a.x + b.x;
+	z.y = a.y + b.y;
+	return (z);
+}
+
+t_complex	multiply(t_complex a, t_complex b)
+{
+	t_complex	z;
+
+	z.x = a.x * b.x - a.y * b.y;
+	z.y = a.x * b.y + a.y * b.x;
+	return (z);
+}
+
+t_complex	get_complex(int x, int y, t_ptr *ptr)
+{
+	t_complex	c;
+
+	c.x = ptr->min.x + x * ((ptr->max.x - ptr->min.x) / IMG_W);
+	c.y = ptr->max.y + y * ((-1) * (ptr->min.y - ptr->max.y) / IMG_H);
+	return (c);
+}
