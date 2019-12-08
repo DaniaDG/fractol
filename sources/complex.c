@@ -44,7 +44,7 @@ t_complex	get_complex(int x, int y, t_ptr *ptr)
 {
 	t_complex	c;
 
-	c.x = ptr->min.x + x * ((ptr->max.x - ptr->min.x) / IMG_W);
-	c.y = ptr->max.y - y * ((ptr->max.y - ptr->min.y) / IMG_H);
+	c.x = ptr->min.x + x * ((ptr->max.x - ptr->min.x) / ptr->w);
+	c.y = ptr->max.y - y * ((ptr->max.y - ptr->min.y) / ptr->h);
 	return (c);
 }

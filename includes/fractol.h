@@ -26,8 +26,8 @@
 # define IMG_W		1000
 # define MENU_H		0
 # define MENU_W		0
-# define HEIGHT		1080
-# define WIDTH		1600
+# define HEIGHT		1000
+# define WIDTH		1000
 
 typedef struct		s_complex
 {
@@ -44,7 +44,9 @@ typedef struct		s_ptr
 	int				bits_per_pixel;
 	int				size_line;
 	int				endian;
-
+	int				h;
+	int				w;
+	double			zoom;
 	t_complex		min;
 	t_complex		max;
 	t_complex		c;
@@ -70,6 +72,8 @@ t_complex	multiply(t_complex a, t_complex b);
 t_complex	get_complex(int x, int y, t_ptr *ptr);
 t_complex	sqr_pow(t_complex c);
 void		draw(t_ptr *ptr);
+int		key_press(int key, t_ptr *ptr);
+//int		mouse_press(int key, t_ptr *ptr);
 
 
 

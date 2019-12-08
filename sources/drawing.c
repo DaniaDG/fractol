@@ -33,11 +33,14 @@ void		draw(t_ptr *ptr)
 	t_complex	c;
 	t_complex	z;
 
+	ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
 	x = -1;
-	while (x++ <= IMG_W)
+	//ptr->w = (int)(ptr->w * ptr->zoom);
+	//ptr->h = (int)(ptr->h * ptr->zoom);
+	while (x++ <= ptr->w)
 	{
 		y = -1;
-		while (y++ <= IMG_H)
+		while (y++ <= ptr->h)
 		{
 			c = get_complex(x, y, ptr);
 			z = c;
@@ -57,5 +60,5 @@ void		draw(t_ptr *ptr)
 			ptr->prev_color = ptr->next_color;
 		}
 	}
-	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 300, 50);
+	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 0, 0);
 }

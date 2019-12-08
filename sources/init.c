@@ -36,7 +36,10 @@ t_ptr	*init_ptr(void)
 	ptr->max.x = 2.0;
 	ptr->min.y = -2.0;
 	ptr->max.y = 2.0;
-	ptr->max_iteration = 20;
+	ptr->h = IMG_H;
+	ptr->w = IMG_W;
+	ptr->zoom = 1.0;
+	ptr->max_iteration = 40;
 	ptr->prev_color = BLACK;
 	ptr->color_step = 0xFFFFFF / ptr->max_iteration;
 	return(ptr);
