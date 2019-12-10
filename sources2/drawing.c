@@ -33,11 +33,12 @@ void		draw(t_ptr *ptr)
 	t_complex	c;
 	t_complex	z;
 
-	x = ptr->x;
-	while (x < ptr->w)
+	ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
+	x = 0;
+	while (x < IMG_W)
 	{
-		y = ptr->y;
-		while (y < ptr->h)
+		y = 0;
+		while (y < IMG_H)
 		{
 			c = get_complex(x, y, ptr);
 			z = c;
@@ -52,7 +53,6 @@ void		draw(t_ptr *ptr)
 				}
 				i++;
 			}
-			ptr->prev_color = ptr->next_color;
 			y++;
 		}
 		x++;

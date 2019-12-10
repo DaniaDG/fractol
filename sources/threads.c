@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   other.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsausage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,31 +11,35 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <pthread.h>
 
-static void	init_mlx(t_ptr *ptr)
+int		threads(t_ptr *ptr)
 {
-	if (!(ptr->mlx = mlx_init()))
-		error("mlx init error");
-	if (!(ptr->win = mlx_new_window(ptr->mlx, WIDTH, HEIGHT, "FDF")))
-		error("windows init error");
-	if (!(ptr->img = mlx_new_image(ptr->mlx, IMG_W, IMG_H)))
-		error("image init error");
-	ptr->data_addr = mlx_get_data_addr(ptr->img, &(ptr->bits_per_pixel),
-										&(ptr->size_line), &(ptr->endian));
-}
+	int			result;
+	pthread_t	threads[MAXTHREADS];
+	void		*status[MAXTHREADS];
+	int			i;
+	t_ptr		tmp[MAXTHREADS];
 
-
-t_ptr	*init_ptr(void)
-{
-	t_ptr	*ptr;
-
-	if (!(ptr = (t_ptr *)malloc(sizeof(t_ptr))))
-		error("init error");
-	init_mlx(ptr);
-	ptr->min.x = -2.0;
-	ptr->max.x = 2.0;
-	ptr->min.y = -2.0;
-	ptr->max.y = ptr->min.y + (ptr->max.x - ptr->min.x) * IMG_H / IMG_W;
-
-	return(ptr);
+	i = 0;
+	while (i < MAXTHREADS)
+	{
+		tmp[i] = *ptr;
+		tmp[i].y = i * 100;
+		tmp[i].max.y = tmp[i].y + 100;
+		result = pthread_create(&threads[i], NULL, draw, &tmp[i]);
+		if (result)
+			perror("Creating thread");
+		i++;
+	}
+	//
+	i = 0;
+	while (i < MAXTHREADS)
+	{
+		result = pthread_join(threads[i], &status[i]);
+		if (result)
+			perror("Joining thread");
+		i++;
+	}
+	return (0);
 }

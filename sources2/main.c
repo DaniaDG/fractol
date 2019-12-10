@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsausage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,30 +12,18 @@
 
 #include "fractol.h"
 
-static void	init_mlx(t_ptr *ptr)
+int		main(int argc, char **argv)
 {
-	if (!(ptr->mlx = mlx_init()))
-		error("mlx init error");
-	if (!(ptr->win = mlx_new_window(ptr->mlx, WIDTH, HEIGHT, "FDF")))
-		error("windows init error");
-	if (!(ptr->img = mlx_new_image(ptr->mlx, IMG_W, IMG_H)))
-		error("image init error");
-	ptr->data_addr = mlx_get_data_addr(ptr->img, &(ptr->bits_per_pixel),
-										&(ptr->size_line), &(ptr->endian));
-}
+	t_ptr		*ptr;
 
-
-t_ptr	*init_ptr(void)
-{
-	t_ptr	*ptr;
-
-	if (!(ptr = (t_ptr *)malloc(sizeof(t_ptr))))
-		error("init error");
-	init_mlx(ptr);
-	ptr->min.x = -2.0;
-	ptr->max.x = 2.0;
-	ptr->min.y = -2.0;
-	ptr->max.y = ptr->min.y + (ptr->max.x - ptr->min.x) * IMG_H / IMG_W;
-
-	return(ptr);
+	errno = 0;
+	if (argc != 1)
+	{	
+		printf("%s\n", argv[0]);
+		error("error");
+	}
+	ptr = init_ptr();
+	draw(ptr);
+	hooks(ptr);
+	return (0);
 }

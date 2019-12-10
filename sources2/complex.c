@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsausage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,30 +12,39 @@
 
 #include "fractol.h"
 
-static void	init_mlx(t_ptr *ptr)
+t_complex	sum(t_complex a, t_complex b)
 {
-	if (!(ptr->mlx = mlx_init()))
-		error("mlx init error");
-	if (!(ptr->win = mlx_new_window(ptr->mlx, WIDTH, HEIGHT, "FDF")))
-		error("windows init error");
-	if (!(ptr->img = mlx_new_image(ptr->mlx, IMG_W, IMG_H)))
-		error("image init error");
-	ptr->data_addr = mlx_get_data_addr(ptr->img, &(ptr->bits_per_pixel),
-										&(ptr->size_line), &(ptr->endian));
+	t_complex	z;
+
+	z.x = a.x + b.x;
+	z.y = a.y + b.y;
+	return (z);
+}
+
+t_complex	multiply(t_complex a, t_complex b)
+{
+	t_complex	z;
+
+	z.x = a.x * b.x - a.y * b.y;
+	z.y = a.x * b.y + a.y * b.x;
+	return (z);
+}
+
+t_complex	sqr_pow(t_complex c)
+{
+	t_complex	z;
+
+	z.x = c.x * c.x - c.y * c.y;
+	z.y = 2 * c.x * c.y;
+	return (z);
 }
 
 
-t_ptr	*init_ptr(void)
+t_complex	get_complex(int x, int y, t_ptr *ptr)
 {
-	t_ptr	*ptr;
+	t_complex	c;
 
-	if (!(ptr = (t_ptr *)malloc(sizeof(t_ptr))))
-		error("init error");
-	init_mlx(ptr);
-	ptr->min.x = -2.0;
-	ptr->max.x = 2.0;
-	ptr->min.y = -2.0;
-	ptr->max.y = ptr->min.y + (ptr->max.x - ptr->min.x) * IMG_H / IMG_W;
-
-	return(ptr);
+	c.x = ptr->min.x + x * ((ptr->max.x - ptr->min.x) / (IMG_W - 1));
+	c.y = ptr->max.y - y * ((ptr->max.y - ptr->min.y) / (IMG_H - 1));
+	return (c);
 }

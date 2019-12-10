@@ -50,7 +50,7 @@ int		move_img(int key, t_ptr *ptr)
 
 int		key_press(int key, t_ptr *ptr)
 {
-	//ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
+	ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
 	if (key == ESC)
 		exit(0);
 	if (key == Q_BUTTON || key == W_BUTTON)

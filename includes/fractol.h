@@ -20,6 +20,7 @@
 # include "mlx.h"
 # include "libft.h"
 # include "colors.h"
+# include "keycodes.h"
 # include "get_next_line.h"
 
 # define IMG_H		1000
@@ -28,6 +29,7 @@
 # define MENU_W		0
 # define HEIGHT		1000
 # define WIDTH		1000
+# define MAXTHREADS	10
 
 typedef struct		s_complex
 {
@@ -46,6 +48,10 @@ typedef struct		s_ptr
 	int				endian;
 	int				h;
 	int				w;
+	int				x;
+	int				y;
+	int				move_x;
+	int				move_y;
 	double			zoom;
 	t_complex		min;
 	t_complex		max;
@@ -73,7 +79,8 @@ t_complex	get_complex(int x, int y, t_ptr *ptr);
 t_complex	sqr_pow(t_complex c);
 void		draw(t_ptr *ptr);
 int		key_press(int key, t_ptr *ptr);
-//int		mouse_press(int key, t_ptr *ptr);
+int		mouse_press(int key, int x, int y, t_ptr *ptr);
+//int		threads(t_ptr *ptr);
 
 
 

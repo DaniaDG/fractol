@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keycodes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsausage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/04 09:46:07 by bsausage          #+#    #+#             */
-/*   Updated: 2019/10/22 09:07:49 by bsausage         ###   ########.fr       */
+/*   Created: 2019/10/21 12:39:28 by bsausage          #+#    #+#             */
+/*   Updated: 2019/10/21 12:39:29 by bsausage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#ifndef KEYCODES_H
+# define KEYCODES_H
 
-int		main(int argc, char **argv)
-{
-	t_ptr		*ptr;
+# define UP		126
+# define DOWN	125
+# define LEFT	123
+# define RIGHT	124
 
-	errno = 0;
-	if (argc != 1)
-	{	
-		printf("%s\n", argv[0]);
-		error("error");
-	}
-	ptr = init_ptr();
-	//draw(ptr);
-	threads(ptr);
-	hooks(ptr);
-	return (0);
-}
+# define Q_BUTTON	12
+# define W_BUTTON	13
+# define A_BUTTON	0
+# define S_BUTTON	1
+
+# define SCROLL_UP		4
+# define SCROLL_DOWN	5
+
+# define ESC		53
+
+#endif

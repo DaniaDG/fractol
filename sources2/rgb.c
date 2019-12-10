@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bsausage <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/04 09:46:07 by bsausage          #+#    #+#             */
-/*   Updated: 2019/10/22 09:07:49 by bsausage         ###   ########.fr       */
+/*   Created: 2019/12/01 11:25:25 by bsausage          #+#    #+#             */
+/*   Updated: 2019/12/01 19:01:06 by bsausage         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		main(int argc, char **argv)
+int		red(int rgb)
 {
-	t_ptr		*ptr;
+	return ((rgb >> 16) & 0xFF);
+}
 
-	errno = 0;
-	if (argc != 1)
-	{	
-		printf("%s\n", argv[0]);
-		error("error");
-	}
-	ptr = init_ptr();
-	//draw(ptr);
-	threads(ptr);
-	hooks(ptr);
-	return (0);
+int		green(int rgb)
+{
+	return ((rgb >> 8) & 0xFF);
+}
+
+int		blue(int rgb)
+{
+	return (rgb & 0xFF);
+}
+
+int		rgb(int r, int g, int b)
+{
+	return ((r << 16) | (g << 8) | b);
 }
