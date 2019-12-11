@@ -25,6 +25,7 @@
 # define W_BUTTON	13
 # define A_BUTTON	0
 # define S_BUTTON	1
+# define J_BUTTON	38
 
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5

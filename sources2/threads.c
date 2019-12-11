@@ -95,7 +95,7 @@ int		thread(t_ptr *ptr)
 		//tmp[i].mouse_left = NOT_PRESSED;
 		tmp[i].y_begin = i * (IMG_H / MAXTHREADS);
 		tmp[i].y_end = tmp[i].y_begin + IMG_H / MAXTHREADS;
-		result = pthread_create(&threads[i], NULL, draw1, &tmp[i]);
+		result = pthread_create(&threads[i], NULL, draw2, &tmp[i]);
 		if (result != 0)
 		{
 			perror("Creating thread");

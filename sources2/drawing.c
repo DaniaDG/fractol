@@ -108,19 +108,18 @@ void		*draw2(void *arg)
 	t_complex	z;
 	t_ptr		*ptr = (t_ptr *)arg;
 
-	//ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
 	x = 0;
 	while (x < IMG_W)
 	{
-		y = 250;
-		while (y < 500)
+		y = ptr->y_begin;
+		while (y < ptr->y_end)
 		{
 			c = get_complex(x, y, ptr);
 			z = c;
 			i = 1;
 			while (i <= ptr->max_iteration)
 			{
-				z = sum(sqr_pow(z), c);
+				z = sum(sqr_pow(z), ptr->k);
 				if (z.x * z.x + z.y * z.y > 4.0)
 				{
 					put_pixel(ptr, x, y, color(i, 0, ptr->max_iteration, C1, C2));
@@ -132,80 +131,5 @@ void		*draw2(void *arg)
 		}
 		x++;
 	}
-	//mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 0, 0);
-	return (SUCCESS);
-}
-
-void		*draw3(void *arg)
-{
-	int			x;
-	int			y;
-	int			i;
-	t_complex	c;
-	t_complex	z;
-	t_ptr		*ptr = (t_ptr *)arg;
-
-	//ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
-	x = 0;
-	while (x < IMG_W)
-	{
-		y = 500;
-		while (y < 750)
-		{
-			c = get_complex(x, y, ptr);
-			z = c;
-			i = 1;
-			while (i <= ptr->max_iteration)
-			{
-				z = sum(sqr_pow(z), c);
-				if (z.x * z.x + z.y * z.y > 4.0)
-				{
-					put_pixel(ptr, x, y, color(i, 0, ptr->max_iteration, C1, C2));
-					break ;
-				}
-				i++;
-			}
-			y++;
-		}
-		x++;
-	}
-	//mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 0, 0);
-	return (SUCCESS);
-}
-
-void		*draw4(void *arg)
-{
-	int			x;
-	int			y;
-	int			i;
-	t_complex	c;
-	t_complex	z;
-	t_ptr		*ptr = (t_ptr *)arg;
-
-	//ft_bzero(ptr->data_addr, IMG_W * IMG_H * (ptr->bits_per_pixel / 8));
-	x = 0;
-	while (x < IMG_W)
-	{
-		y = 750;
-		while (y < 1000)
-		{
-			c = get_complex(x, y, ptr);
-			z = c;
-			i = 1;
-			while (i <= ptr->max_iteration)
-			{
-				z = sum(sqr_pow(z), c);
-				if (z.x * z.x + z.y * z.y > 4.0)
-				{
-					put_pixel(ptr, x, y, color(i, 0, ptr->max_iteration, C1, C2));
-					break ;
-				}
-				i++;
-			}
-			y++;
-		}
-		x++;
-	}
-	//mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 0, 0);
 	return (SUCCESS);
 }

@@ -41,6 +41,12 @@ typedef struct		s_complex
 	double		y;
 }					t_complex;
 
+typedef struct		s_color
+{
+	int			color1;
+	int			color2;
+}					t_color;
+
 typedef enum
 {
 	IS_PRESSED,
@@ -68,8 +74,11 @@ typedef struct		s_ptr
 	double			zoom;
 	t_complex		min;
 	t_complex		max;
+	t_complex		k;
 	t_button		mouse_left;
 	t_mouse			*mouse;
+	t_color			color;
+	int				is_julia;
 	int				max_iteration;
 	int				y_begin;
 	int				y_end;

@@ -38,6 +38,9 @@ t_ptr	*init_ptr(void)
 	ptr->max.x = 2.0;
 	ptr->min.y = -2.0;
 	ptr->max.y = 2.0;
+	ptr->k.x = -0.4;
+	ptr->k.y = 0.6;
+	ptr->is_julia = 0;
 	ptr->mouse_left = NOT_PRESSED;
 	ptr->max_iteration = 50;
 	return(ptr);
