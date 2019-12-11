@@ -39,7 +39,6 @@ t_complex	sqr_pow(t_complex c)
 	return (z);
 }
 
-
 t_complex	get_complex(int x, int y, t_ptr *ptr)
 {
 	t_complex	c;

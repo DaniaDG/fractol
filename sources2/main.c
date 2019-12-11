@@ -12,18 +12,28 @@
 
 #include "fractol.h"
 
-int		main(int argc, char **argv)
+static void		(*get_formula(char *name)) (int x, int y, t_ptr *ptr)
+{
+	if (ft_strequ(name, "Mandelbrot"))
+		return (&mandelbrot);
+	if (ft_strequ(name, "Julia"))
+		return (&julia);
+	return (0);
+}
+
+int				main(int argc, char **argv)
 {
 	t_ptr		*ptr;
 
 	errno = 0;
-	if (argc != 1)
-	{	
-		printf("%s\n", argv[0]);
-		error("error");
-	}
+	if (argc == 1)
+		error("missing arguments");
+	if (argc > 2)
+		error("too many arguments");
 	ptr = init_ptr();
-	//draw(ptr);
+	if (ft_strequ(argv[1], "Julia"))
+		ptr->is_julia = 1;
+	ptr->formula = get_formula(argv[1]);
 	thread(ptr);
 	hooks(ptr);
 	return (0);

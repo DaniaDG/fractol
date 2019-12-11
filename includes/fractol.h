@@ -82,6 +82,7 @@ typedef struct		s_ptr
 	int				max_iteration;
 	int				y_begin;
 	int				y_end;
+	void			(*formula)(int x, int y, struct s_ptr *ptr);
 }					t_ptr;
 
 void		hooks(t_ptr *ptr);
@@ -93,21 +94,21 @@ int			red(int rgb);
 int			green(int rgb);
 int			blue(int rgb);
 int			rgb(int r, int g, int b);
-int			color(int current, int min, int max, int color1, int color2);
-int			i_color(t_ptr *ptr, int i);
+int			get_color(int i, t_ptr *ptr);
 t_complex	sum(t_complex a, t_complex b);
 t_complex	multiply(t_complex a, t_complex b);
 t_complex	get_complex(int x, int y, t_ptr *ptr);
 t_complex	sqr_pow(t_complex c);
-void		draw(t_ptr *ptr);
-void		*draw1(void *arg);
-void		*draw2(void *arg);
-void		*draw3(void *arg);
-void		*draw4(void *arg);
+void		*draw(void *arg);
+void		mandelbrot(int x, int y, t_ptr *ptr);
+void		julia(int x, int y, t_ptr *ptr);
 int			key_press(int key, t_ptr *ptr);
 int			mouse_press(int key, int x, int y, t_ptr *ptr);
 int 		mouse_release(int key, int x, int y, t_ptr *ptr);
 int 		mouse_move(int x, int y, t_ptr *ptr);
+int			change_max_iteration(int key, t_ptr *ptr);
+int			change_zoom(int key, int x, int y, t_ptr *ptr);
+void		move_img(int key, t_ptr *ptr);
 int			thread(t_ptr *ptr);
 
 

@@ -26,8 +26,8 @@
 # define C1				BLACK
 # define C2				YELLOW
 # define C3				RED
-# define C4				PINK
-# define C5				BLUE
+# define C4				BLUE
+# define C5				GREEN
 
 # define BACKGROUND		0x555555
 

@@ -24,8 +24,7 @@ static void	init_mlx(t_ptr *ptr)
 										&(ptr->size_line), &(ptr->endian));
 }
 
-
-t_ptr	*init_ptr(void)
+t_ptr		*init_ptr(void)
 {
 	t_ptr	*ptr;
 
@@ -43,5 +42,5 @@ t_ptr	*init_ptr(void)
 	ptr->is_julia = 0;
 	ptr->mouse_left = NOT_PRESSED;
 	ptr->max_iteration = 50;
-	return(ptr);
+	return (ptr);
 }

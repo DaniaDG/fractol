@@ -31,7 +31,7 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./sources2/
 SOURCES_LIST = main.c init.c other.c complex.c drawing.c rgb.c color.c\
-controls.c threads.c
+controls.c threads.c formulas.c img_change.c
 
 OBJECTS_DIRECTORY = objects/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
