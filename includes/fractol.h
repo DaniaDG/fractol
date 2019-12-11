@@ -94,6 +94,7 @@ int			red(int rgb);
 int			green(int rgb);
 int			blue(int rgb);
 int			rgb(int r, int g, int b);
+int			color(int current, int max, int color1, int color2);
 int			get_color(int i, t_ptr *ptr);
 t_complex	sum(t_complex a, t_complex b);
 t_complex	multiply(t_complex a, t_complex b);
