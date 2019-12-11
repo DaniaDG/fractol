@@ -32,8 +32,8 @@ void	hooks(t_ptr *ptr)
 	mlx_hook(ptr->win, 2, 0, key_press, ptr);
 	//mlx_hook(ptr->win, 3, 0, key_release, ptr);
 	mlx_hook(ptr->win, 4, 0, mouse_press, ptr);
-	//mlx_hook(ptr->win, 5, 0, mouse_release, ptr);
-	//mlx_hook(ptr->win, 6, 0, mouse_move, ptr);
+	mlx_hook(ptr->win, 5, 0, mouse_release, ptr);
+	mlx_hook(ptr->win, 6, 0, mouse_move, ptr);
 	mlx_hook(ptr->win, 17, 0, turn_off, ptr);
 	mlx_loop(ptr->mlx);
 }

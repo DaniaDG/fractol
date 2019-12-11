@@ -29,13 +29,32 @@
 # define MENU_W		0
 # define HEIGHT		1000
 # define WIDTH		1000
-# define MAXTHREADS	10
+# define MAXTHREADS	16
+
+# define ERROR_CREATE_THREAD -11
+# define ERROR_JOIN_THREAD   -12
+# define SUCCESS               0
 
 typedef struct		s_complex
 {
 	double		x;
 	double		y;
 }					t_complex;
+
+typedef enum
+{
+	IS_PRESSED,
+	NOT_PRESSED
+}	t_button;
+
+typedef struct		s_mouse
+{
+	int			curr_x;
+	int			curr_y;
+	int			prev_x;
+	int			prev_y;
+	//t_button	button;
+}					t_mouse;
 
 typedef struct		s_ptr
 {
@@ -46,41 +65,41 @@ typedef struct		s_ptr
 	int				bits_per_pixel;
 	int				size_line;
 	int				endian;
-	int				h;
-	int				w;
-	int				x;
-	int				y;
-	int				move_x;
-	int				move_y;
 	double			zoom;
 	t_complex		min;
 	t_complex		max;
-	t_complex		c;
+	t_button		mouse_left;
+	t_mouse			*mouse;
 	int				max_iteration;
-	int				color_step;
-	int				prev_color;
-	int				next_color;
+	int				y_begin;
+	int				y_end;
 }					t_ptr;
 
-void	hooks(t_ptr *ptr);
-void	error(char *str);
-int		turn_off(void *param);
-t_ptr	*init_ptr(void);
-void	put_pixel(t_ptr *ptr, int x, int y, int color);
-int		red(int rgb);
-int		green(int rgb);
-int		blue(int rgb);
-int		rgb(int r, int g, int b);
-int		color(int current, int min, int max, int color1, int color2);
-int		i_color(t_ptr *ptr, int i);
+void		hooks(t_ptr *ptr);
+void		error(char *str);
+int			turn_off(void *param);
+t_ptr		*init_ptr(void);
+void		put_pixel(t_ptr *ptr, int x, int y, int color);
+int			red(int rgb);
+int			green(int rgb);
+int			blue(int rgb);
+int			rgb(int r, int g, int b);
+int			color(int current, int min, int max, int color1, int color2);
+int			i_color(t_ptr *ptr, int i);
 t_complex	sum(t_complex a, t_complex b);
 t_complex	multiply(t_complex a, t_complex b);
 t_complex	get_complex(int x, int y, t_ptr *ptr);
 t_complex	sqr_pow(t_complex c);
 void		draw(t_ptr *ptr);
-int		key_press(int key, t_ptr *ptr);
-int		mouse_press(int key, int x, int y, t_ptr *ptr);
-//int		threads(t_ptr *ptr);
+void		*draw1(void *arg);
+void		*draw2(void *arg);
+void		*draw3(void *arg);
+void		*draw4(void *arg);
+int			key_press(int key, t_ptr *ptr);
+int			mouse_press(int key, int x, int y, t_ptr *ptr);
+int 		mouse_release(int key, int x, int y, t_ptr *ptr);
+int 		mouse_move(int x, int y, t_ptr *ptr);
+int			thread(t_ptr *ptr);
 
 
 

@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static double	percent(int start, int end, int current)
+/*static double	percent(int start, int end, int current)
 {
 	double placement;
 	double distance;
@@ -20,23 +20,14 @@ static double	percent(int start, int end, int current)
 	placement = current - start;
 	distance = end - start;
 	return ((distance == 0) ? 1.0 : (placement / distance));
-}
+}*/
 
-int				i_color(t_ptr *ptr, int i)
+static double	percent(int start, int end, int current)
 {
-	int		color_nb = 5;
-	double		t;
+	double delta;
 
-	t = ptr->max_iteration / color_nb;
-	if (i <= 1 * t)
-		return (C1);
-	if (i <= 2 * t)
-		return (C2);
-	if (i <= 3 * t)
-		return (C3);
-	if (i <= 4 * t)
-		return (C4);
-	return (C5);
+	delta = end - start;
+	return ((delta == 0) ? 0.0 : (current / delta));
 }
 
 /*int				color(int current, int min, int max, int color)

@@ -18,6 +18,9 @@
 # define LEFT	123
 # define RIGHT	124
 
+# define PLUS_NUM	69
+# define MINUS_NUM	78
+
 # define Q_BUTTON	12
 # define W_BUTTON	13
 # define A_BUTTON	0
@@ -25,6 +28,9 @@
 
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5
+
+# define MOUSE_LEFT		1
+# define MOUSE_RIGHT	2
 
 # define ESC		53
 

@@ -23,7 +23,8 @@ int		main(int argc, char **argv)
 		error("error");
 	}
 	ptr = init_ptr();
-	draw(ptr);
+	//draw(ptr);
+	thread(ptr);
 	hooks(ptr);
 	return (0);
 }
