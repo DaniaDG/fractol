@@ -29,7 +29,7 @@ HEADERS_LIST = fractol.h
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SOURCES_DIRECTORY = ./sources2/
+SOURCES_DIRECTORY = ./sources/
 SOURCES_LIST = main.c init.c other.c complex.c drawing.c rgb.c color.c\
 controls.c threads.c formulas.c img_change.c
 
