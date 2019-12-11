@@ -18,6 +18,8 @@ static void		(*get_formula(char *name)) (int x, int y, t_ptr *ptr)
 		return (&mandelbrot);
 	if (ft_strequ(name, "Julia"))
 		return (&julia);
+	if (ft_strequ(name, "Ship"))
+		return (&burning_ship);
 	return (0);
 }
 
@@ -33,7 +35,8 @@ int				main(int argc, char **argv)
 	ptr = init_ptr();
 	if (ft_strequ(argv[1], "Julia"))
 		ptr->is_julia = 1;
-	ptr->formula = get_formula(argv[1]);
+	if (!(ptr->formula = get_formula(argv[1])))
+		error("fractal name error");
 	thread(ptr);
 	hooks(ptr);
 	return (0);

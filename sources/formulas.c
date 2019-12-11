@@ -33,6 +33,30 @@ void		mandelbrot(int x, int y, t_ptr *ptr)
 	}
 }
 
+void	burning_ship(int x, int y, t_ptr *ptr)
+{
+	int			i;
+	t_complex	z;
+	t_complex	tmp;
+	t_complex	c;
+
+	i = 1;
+	c = get_complex(x, y, ptr);
+	z = c;
+	while (i <= ptr->max_iteration)
+	{
+		tmp.x = z.x;
+		z.x = fabs(pow(tmp.x, 2.0) - pow(tmp.y, 2.0) + c.x);
+		z.y = fabs(2.0 * tmp.x * z.y + c.y);
+		if (z.x * z.x + z.y * z.y > 4.0)
+		{
+			put_pixel(ptr, x, y, get_color(i, ptr));
+			return ;
+		}
+		i++;
+	}
+}
+
 void		julia(int x, int y, t_ptr *ptr)
 {
 	t_complex	z;
