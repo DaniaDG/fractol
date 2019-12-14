@@ -20,10 +20,7 @@ int		turn_off(void *param)
 
 void	error(char *str)
 {
-	if (!errno)
-		ft_putendl_fd(str, 2);
-	else
-		perror(str);
+	ft_putendl_fd(str, 2);
 	exit(1);
 }
 

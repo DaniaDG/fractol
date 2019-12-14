@@ -27,12 +27,14 @@ int				main(int argc, char **argv)
 {
 	t_ptr		*ptr;
 
-	errno = 0;
 	if (argc == 1)
-		error("missing arguments");
+		error("usage: ./fractol [Mandelbrot | Julia | Ship]");
 	if (argc > 2)
 		error("too many arguments");
 	ptr = init_ptr();
+	if (!ft_strequ(argv[1], "Julia") && !(ft_strequ(argv[1], "Mandelbrot"))
+		&& !(ft_strequ(argv[1], "Ship")))
+		error("usage: ./fractol [Mandelbrot | Julia | Ship]");
 	if (ft_strequ(argv[1], "Julia"))
 		ptr->is_julia = 1;
 	if (!(ptr->formula = get_formula(argv[1])))

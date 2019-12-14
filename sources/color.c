@@ -20,7 +20,7 @@ static double	percent(int start, int end, int current)
 	return ((delta == 0) ? 0.0 : (current / delta));
 }
 
-int		color(int current, int max, int color1, int color2)
+int				color(int current, int max, int color1, int color2)
 {
 	int		r;
 	int		g;
