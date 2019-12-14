@@ -36,7 +36,7 @@ int				main(int argc, char **argv)
 		&& !(ft_strequ(argv[1], "Ship")))
 		error("usage: ./fractol [Mandelbrot | Julia | Ship]");
 	if (ft_strequ(argv[1], "Julia"))
-		ptr->is_julia = 1;
+		ptr->space_button = NOT_PRESSED;
 	if (!(ptr->formula = get_formula(argv[1])))
 		error("fractal name error");
 	thread(ptr);

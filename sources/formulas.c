@@ -49,7 +49,7 @@ void		burning_ship(int x, int y, t_ptr *ptr)
 		z = sum(sqr_pow(z), c);
 		if (z.x * z.x + z.y * z.y > 4.0)
 		{
-			put_pixel(ptr, x, y, color(i, ptr->max_iteration, BLUE, RED));
+			put_pixel(ptr, x, y, color(i, ptr->max_iteration, BLACK, YELLOW));
 			return ;
 		}
 		i++;

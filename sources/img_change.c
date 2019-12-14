@@ -39,6 +39,37 @@ int		change_zoom(int key, int x, int y, t_ptr *ptr)
 	return (0);
 }
 
+int		change_formula(t_ptr *ptr)
+{
+	if (ptr->formula == &mandelbrot)
+	{
+		ptr->formula = &julia;
+		ptr->space_button = NOT_PRESSED;
+		redraw(ptr);
+		return (0);
+	}
+	if (ptr->formula == &julia)
+	{
+		ptr->formula = &burning_ship;
+		redraw(ptr);
+		return (0);
+	}
+	ptr->formula = &mandelbrot;
+	redraw(ptr);
+	return (0);
+}
+
+int		redraw(t_ptr *ptr)
+{
+	ptr->min.x = -2.0;
+	ptr->max.x = 2.0;
+	ptr->min.y = -2.0;
+	ptr->max.y = ptr->min.x + (ptr->max.x - ptr->min.x) * IMG_H / IMG_W;
+	ptr->max_iteration = 50;
+	thread(ptr);
+	return (0);
+}
+
 void	move_img(int key, t_ptr *ptr)
 {
 	t_complex	delta;

@@ -25,13 +25,17 @@ int		key_press(int key, t_ptr *ptr)
 	}
 	if (key == UP || key == DOWN || key == LEFT || key == RIGHT)
 		move_img(key, ptr);
-	if (key == J_BUTTON)
+	if (key == SPACE)
 	{
-		if (ptr->is_julia == 0)
-			ptr->is_julia = 1;
+		if (ptr->space_button == NOT_PRESSED)
+			ptr->space_button = IS_PRESSED;
 		else
-			ptr->is_julia = 0;
+			ptr->space_button = NOT_PRESSED;
 	}
+	if (key == R_BUTTON)
+		redraw(ptr);
+	if (key == N_BUTTON)
+		change_formula(ptr);
 	return (0);
 }
 
@@ -53,28 +57,10 @@ int		mouse_release(int key, int x, int y, t_ptr *ptr)
 
 int		mouse_move(int x, int y, t_ptr *ptr)
 {
-	t_complex	delta;
-	t_complex	d;
-
-	if (ptr->is_julia)
+	if (ptr->space_button == NOT_PRESSED)
 	{
 		ptr->k.x = 4 * ((double)x / IMG_W - 0.5);
 		ptr->k.y = 4 * ((double)(IMG_H - y) / IMG_H - 0.5);
-	}
-	else if (ptr->mouse_left == IS_PRESSED)
-	{
-		delta.x = ptr->max.x - ptr->min.x;
-		delta.y = ptr->max.y - ptr->min.y;
-		ptr->mouse->prev_x = ptr->mouse->curr_x;
-		ptr->mouse->prev_y = ptr->mouse->curr_y;
-		ptr->mouse->curr_x = x;
-		ptr->mouse->curr_y = y;
-		d.x = ptr->mouse->curr_x - ptr->mouse->prev_x;
-		d.y = ptr->mouse->curr_y - ptr->mouse->prev_y;
-		ptr->min.x += d.x <= 0 ? delta.x * 0.01 : delta.x * (-0.01);
-		ptr->max.x += d.x <= 0 ? delta.x * 0.01 : delta.x * (-0.01);
-		ptr->min.y += d.y >= 0 ? delta.y * 0.01 : delta.y * (-0.01);
-		ptr->max.y += d.y >= 0 ? delta.y * 0.01 : delta.y * (-0.01);
 	}
 	thread(ptr);
 	return (0);

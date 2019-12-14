@@ -39,7 +39,7 @@ t_ptr		*init_ptr(void)
 	ptr->max.y = ptr->min.x + (ptr->max.x - ptr->min.x) * IMG_H / IMG_W;
 	ptr->k.x = -0.4;
 	ptr->k.y = 0.6;
-	ptr->is_julia = 0;
+	ptr->space_button = NOT_PRESSED;
 	ptr->mouse_left = NOT_PRESSED;
 	ptr->max_iteration = 50;
 	return (ptr);
