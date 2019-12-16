@@ -20,6 +20,8 @@ static void		(*get_formula(char *name)) (int x, int y, t_ptr *ptr)
 		return (&julia);
 	if (ft_strequ(name, "Ship"))
 		return (&burning_ship);
+	if (ft_strequ(name, "Test"))
+		return (&test);
 	return (0);
 }
 
@@ -33,13 +35,14 @@ int				main(int argc, char **argv)
 		error("too many arguments");
 	ptr = init_ptr();
 	if (!ft_strequ(argv[1], "Julia") && !(ft_strequ(argv[1], "Mandelbrot"))
-		&& !(ft_strequ(argv[1], "Ship")))
+		&& !(ft_strequ(argv[1], "Ship")) && !(ft_strequ(argv[1], "Test")))
 		error("usage: ./fractol [Mandelbrot | Julia | Ship]");
 	if (ft_strequ(argv[1], "Julia"))
 		ptr->space_button = NOT_PRESSED;
 	if (!(ptr->formula = get_formula(argv[1])))
 		error("fractal name error");
 	thread(ptr);
+	draw_help(ptr);
 	hooks(ptr);
 	return (0);
 }

@@ -20,6 +20,7 @@
 
 # define PLUS_NUM	69
 # define MINUS_NUM	78
+# define ENTER_NUM	76
 
 # define SPACE		49
 # define Q_BUTTON	12
@@ -29,6 +30,7 @@
 # define J_BUTTON	38
 # define N_BUTTON	45
 # define R_BUTTON	15
+# define C_BUTTON	8
 
 # define SCROLL_UP		4
 # define SCROLL_DOWN	5

@@ -38,5 +38,6 @@ int		thread(t_ptr *ptr)
 			perror("Joining thread");
 	}
 	mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->img, 0, 0);
+	draw_help(ptr);
 	return (0);
 }

@@ -47,3 +47,12 @@ t_complex	get_complex(int x, int y, t_ptr *ptr)
 	c.y = ptr->max.y - y * ((ptr->max.y - ptr->min.y) / (IMG_H - 1));
 	return (c);
 }
+
+t_complex	sinus(t_complex z)
+{
+	t_complex	res;
+
+	res.x = sin(z.x) * cosh(z.y);
+	res.y = cos(z.x) * sinh(z.y);
+	return (z);
+}

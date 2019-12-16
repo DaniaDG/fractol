@@ -42,5 +42,6 @@ t_ptr		*init_ptr(void)
 	ptr->space_button = NOT_PRESSED;
 	ptr->mouse_left = NOT_PRESSED;
 	ptr->max_iteration = 50;
+	ptr->color_f = &get_color2;
 	return (ptr);
 }

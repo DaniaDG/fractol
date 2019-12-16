@@ -36,6 +36,8 @@ int		key_press(int key, t_ptr *ptr)
 		redraw(ptr);
 	if (key == N_BUTTON)
 		change_formula(ptr);
+	if (key == C_BUTTON)
+		change_color_formula(ptr);
 	return (0);
 }
 

@@ -26,7 +26,7 @@ void		mandelbrot(int x, int y, t_ptr *ptr)
 		z = sum(sqr_pow(z), c);
 		if (z.x * z.x + z.y * z.y > 4.0)
 		{
-			put_pixel(ptr, x, y, get_color(i, ptr));
+			put_pixel(ptr, x, y, ptr->color_f(i, ptr));
 			return ;
 		}
 		i++;
@@ -49,7 +49,7 @@ void		burning_ship(int x, int y, t_ptr *ptr)
 		z = sum(sqr_pow(z), c);
 		if (z.x * z.x + z.y * z.y > 4.0)
 		{
-			put_pixel(ptr, x, y, color(i, ptr->max_iteration, BLACK, YELLOW));
+			put_pixel(ptr, x, y, ptr->color_f(i, ptr));
 			return ;
 		}
 		i++;
@@ -68,7 +68,31 @@ void		julia(int x, int y, t_ptr *ptr)
 		z = sum(sqr_pow(z), ptr->k);
 		if (z.x * z.x + z.y * z.y > 4.0)
 		{
-			put_pixel(ptr, x, y, get_color(i, ptr));
+			put_pixel(ptr, x, y, ptr->color_f(i, ptr));
+			return ;
+		}
+		i++;
+	}
+}
+
+void		test(int x, int y, t_ptr *ptr)
+{
+	t_complex	c;
+	t_complex	z;
+	int			i;
+	int			tmp_x;
+
+	c = get_complex(x, y, ptr);
+	z = c;
+	i = 1;
+	while (i <= ptr->max_iteration)
+	{
+		tmp_x = z.x;
+		z.x = pow(z.x, 3.0) - 3 * z.x * z.y;
+		z.y = 3 * tmp_x * tmp_x * z.y - z.y * z.y;
+		if (z.x * z.x + z.y * z.y > 4.0)
+		{
+			put_pixel(ptr, x, y, ptr->color_f(i, ptr));
 			return ;
 		}
 		i++;

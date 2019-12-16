@@ -16,18 +16,22 @@
 # define RED			0xFF0000
 # define GREEN			0x00FF00
 # define BLUE			0x0000FF
-# define YELLOW			0xd9c91e
+# define YELLOW			0xFFFDAC
 # define GREY			0x555555
 # define PINK			0xFF4DC4
+# define SILVER			0xCCCCCC
 
 # define WHITE			0xFFFFFF
 # define BLACK			0x000000
 
-# define C1				BLACK
-# define C2				YELLOW
-# define C3				RED
-# define C4				BLUE
-# define C5				GREEN
+# define C1				YELLOW
+# define C2				RED
+# define C3				BLUE
+# define C4				PINK
+# define C5				YELLOW
+
+# define C_BEGIN		0x2A6DB0
+# define C_END			0xBBDDFF
 
 # define BACKGROUND		0x555555
 

@@ -36,7 +36,7 @@ int				color(int current, int max, int color1, int color2)
 	return (rgb(r, g, b));
 }
 
-int				get_color(int i, t_ptr *ptr)
+int				get_color1(int i, t_ptr *ptr)
 {
 	int		step;
 
@@ -52,4 +52,24 @@ int				get_color(int i, t_ptr *ptr)
 	else if (i < 4 * step)
 		return (color(i - 3 * step, step, C4, C5));
 	return (C5);
+}
+
+int				get_color2(int i, t_ptr *ptr)
+{
+	int		step;
+	int		k;
+	int		n;
+
+	step = 10;
+	n = ptr->max_iteration / step;
+	if (i == 1)
+		return (C_BEGIN);
+	k = 0;
+	while (k < n)
+	{
+		if (i <= (k + 1) * step)
+			return (color(i - k * step, step, C_BEGIN, C_END));
+		k++;
+	}
+	return (color(i - k * step, step, C_BEGIN, C_END));
 }

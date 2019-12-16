@@ -12,6 +12,18 @@
 
 #include "fractol.h"
 
+void	change_color_formula(t_ptr *ptr)
+{
+	if (ptr->color_f == &get_color1)
+	{
+		ptr->color_f = &get_color2;
+		thread(ptr);
+		return ;
+	}
+	ptr->color_f = &get_color1;
+	thread(ptr);
+}
+
 int		turn_off(void *param)
 {
 	(void)param;

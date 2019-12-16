@@ -84,6 +84,7 @@ typedef struct		s_ptr
 	int				y_begin;
 	int				y_end;
 	void			(*formula)(int x, int y, struct s_ptr *ptr);
+	int				(*color_f)(int i, struct s_ptr *ptr);
 }					t_ptr;
 
 void				hooks(t_ptr *ptr);
@@ -96,15 +97,18 @@ int					green(int rgb);
 int					blue(int rgb);
 int					rgb(int r, int g, int b);
 int					color(int current, int max, int color1, int color2);
-int					get_color(int i, t_ptr *ptr);
+int					get_color1(int i, t_ptr *ptr);
+int					get_color2(int i, t_ptr *ptr);
 t_complex			sum(t_complex a, t_complex b);
 t_complex			multiply(t_complex a, t_complex b);
+t_complex			sinus(t_complex z);
 t_complex			get_complex(int x, int y, t_ptr *ptr);
 t_complex			sqr_pow(t_complex c);
 void				*draw(void *arg);
 void				mandelbrot(int x, int y, t_ptr *ptr);
 void				julia(int x, int y, t_ptr *ptr);
 void				burning_ship(int x, int y, t_ptr *ptr);
+void				test(int x, int y, t_ptr *ptr);
 int					key_press(int key, t_ptr *ptr);
 int					mouse_press(int key, int x, int y, t_ptr *ptr);
 int					mouse_release(int key, int x, int y, t_ptr *ptr);
@@ -113,8 +117,9 @@ int					change_max_iteration(int key, t_ptr *ptr);
 int					change_zoom(int key, int x, int y, t_ptr *ptr);
 int					redraw(t_ptr *ptr);
 int					change_formula(t_ptr *ptr);
+void				change_color_formula(t_ptr *ptr);
 void				move_img(int key, t_ptr *ptr);
 int					thread(t_ptr *ptr);
-void				draw_menu(t_ptr *ptr);
+void				draw_help(t_ptr *ptr);
 
 #endif
