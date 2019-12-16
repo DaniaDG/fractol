@@ -98,3 +98,27 @@ void	move_img(int key, t_ptr *ptr)
 	}
 	thread(ptr);
 }
+
+void	move_img_by_mouse(int x, int y, t_ptr *ptr)
+{
+	t_complex	delta;
+	t_complex	d;
+
+	delta.x = ptr->max.x - ptr->min.x;
+	delta.y = ptr->max.y - ptr->min.y;
+
+	ptr->mouse->prev_x = ptr->mouse->curr_x;
+	ptr->mouse->prev_y = ptr->mouse->curr_y;
+	ptr->mouse->curr_x = x;
+	ptr->mouse->curr_y = y;
+
+	d.x = (x - ptr->mouse->prev_x) * delta.x / (IMG_W - 1);
+	d.y = (y - ptr->mouse->prev_y) * delta.y / (IMG_H - 1);
+
+
+	ptr->min.x -= d.x;
+	ptr->min.y += d.y;
+	ptr->max.x -= d.x;
+	ptr->max.y += d.y;
+	thread(ptr);
+}

@@ -46,7 +46,11 @@ int		mouse_press(int key, int x, int y, t_ptr *ptr)
 	if (key == SCROLL_UP || key == SCROLL_DOWN)
 		change_zoom(key, x, y, ptr);
 	if (key == MOUSE_LEFT && x >= 0 && y >= 0)
+	{
 		ptr->mouse_left = IS_PRESSED;
+		ptr->mouse->curr_x = x;
+		ptr->mouse->curr_y = y;
+	}
 	return (0);
 }
 
@@ -63,7 +67,9 @@ int		mouse_move(int x, int y, t_ptr *ptr)
 	{
 		ptr->k.x = 4 * ((double)x / IMG_W - 0.5);
 		ptr->k.y = 4 * ((double)(IMG_H - y) / IMG_H - 0.5);
+		thread(ptr);
 	}
-	thread(ptr);
+	if (ptr->mouse_left == IS_PRESSED)
+		move_img_by_mouse(x, y, ptr);
 	return (0);
 }

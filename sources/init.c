@@ -16,7 +16,7 @@ static void	init_mlx(t_ptr *ptr)
 {
 	if (!(ptr->mlx = mlx_init()))
 		error("mlx init error");
-	if (!(ptr->win = mlx_new_window(ptr->mlx, WIDTH, HEIGHT, "FDF")))
+	if (!(ptr->win = mlx_new_window(ptr->mlx, WIDTH, HEIGHT, "Fractol by bsausage")))
 		error("windows init error");
 	if (!(ptr->img = mlx_new_image(ptr->mlx, IMG_W, IMG_H)))
 		error("image init error");

@@ -119,6 +119,7 @@ int					redraw(t_ptr *ptr);
 int					change_formula(t_ptr *ptr);
 void				change_color_formula(t_ptr *ptr);
 void				move_img(int key, t_ptr *ptr);
+void				move_img_by_mouse(int x, int y, t_ptr *ptr);
 int					thread(t_ptr *ptr);
 void				draw_help(t_ptr *ptr);
 
