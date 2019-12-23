@@ -19,13 +19,13 @@ void		draw_help(t_ptr *ptr)
 	mlx_string_put(ptr->mlx, ptr->win, 10, 850, SILVER,
 		"Next image     - N");
 	mlx_string_put(ptr->mlx, ptr->win, 10, 870, SILVER,
-		"Move           - Arrows");
+		"Move           - Arrows/Mouse");
 	mlx_string_put(ptr->mlx, ptr->win, 10, 890, SILVER,
 		"Zoom           - Scroll");
 	mlx_string_put(ptr->mlx, ptr->win, 10, 910, SILVER,
 		"Iterations     - +/-");
 	mlx_string_put(ptr->mlx, ptr->win, 10, 930, SILVER,
-		"Color Change   - C/Num_Enter");
+		"Color Change   - C");
 	mlx_string_put(ptr->mlx, ptr->win, 10, 950, SILVER,
 		"Julia Constant - Mouse");
 	mlx_string_put(ptr->mlx, ptr->win, 10, 970, SILVER,

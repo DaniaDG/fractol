@@ -98,3 +98,23 @@ void		test(int x, int y, t_ptr *ptr)
 		i++;
 	}
 }
+
+int			change_formula(t_ptr *ptr)
+{
+	if (ptr->formula == &mandelbrot)
+	{
+		ptr->formula = &julia;
+		ptr->space_button = NOT_PRESSED;
+		redraw(ptr);
+		return (0);
+	}
+	if (ptr->formula == &julia)
+	{
+		ptr->formula = &burning_ship;
+		redraw(ptr);
+		return (0);
+	}
+	ptr->formula = &mandelbrot;
+	redraw(ptr);
+	return (0);
+}
