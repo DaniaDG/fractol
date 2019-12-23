@@ -33,10 +33,10 @@ int				main(int argc, char **argv)
 		error("usage: ./fractol [Mandelbrot | Julia | Ship]");
 	if (argc > 2)
 		error("too many arguments");
-	ptr = init_ptr();
 	if (!ft_strequ(argv[1], "Julia") && !(ft_strequ(argv[1], "Mandelbrot"))
 		&& !(ft_strequ(argv[1], "Ship")) && !(ft_strequ(argv[1], "Test")))
 		error("usage: ./fractol [Mandelbrot | Julia | Ship]");
+	ptr = init_ptr();
 	if (ft_strequ(argv[1], "Julia"))
 		ptr->space_button = NOT_PRESSED;
 	if (!(ptr->formula = get_formula(argv[1])))
